@@ -1,20 +1,58 @@
 <html lang="en">
+
     <head>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Upgraded Octo Eureka </title>
+
+        <script>
+            randomNumber = function(min, max) 
+                { 
+                return Math.floor(Math.random() * (max - min) + min);
+                }
+            setBackgroundColour = function() 
+                {
+                colours_arr = ["#f0ceee", "#ceeaf0", "#cff0ce", "#bababa"]
+                document.body.style.background = colours_arr[randomNumber(0,colours_arr.length)];
+                }
+
+        </script>
+
+        <style>
+            body {
+                color: white;
+                font-family: Ubuntu Mono;
+                font-size: 28px;
+                font-weight: 700;
+                text-shadow: 2px 2px 15px #808080;
+            }
+        </style>
+
     </head>
-    <body>
-        <a href="">Resume</a>
+
+    <body onload="setBackgroundColour()">
+        <a href="https://github.com/frroossst">GitHub and Resume</a>
 
         <center>
+
+        <ul>
+            <li> <a href="#vals">Beliefs and Values</a> </li>
+            <li> <a href="#blog">Writeups</a> </li>
+            <li> <a href="#blog">JSON Resume</a> </li>
+        </ul>
+
+        <h2 id="vals"> Beliefs and Values </h2>
         <ul>
             <li> Function over form </li>
             <li> Open Source all the way down </li>
             <li> Abstraction without loosing meaning </li>
         </ul>
+
+        <h2 id="blog"> Writeups </h2>
+
         </center>
 
-
     </body>
+
 </html>

@@ -84,16 +84,38 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="beliefs_and_values.html"><strong aria-hidden="true">1.</strong> Beliefs and Values</a></li><li class="chapter-item expanded "><a href="to_neovim.html"><strong aria-hidden="true">2.</strong> To neovim</a></li><li class="chapter-item expanded "><a href="ide_journey.html"><strong aria-hidden="true">3.</strong> IDE journey</a></li><li class="chapter-item expanded "><a href="monospaced_fonts.html"><strong aria-hidden="true">4.</strong> Monospaced Fonts</a></li><li class="chapter-item expanded "><a href="why_i_use_neovim_in_2022.html"><strong aria-hidden="true">5.</strong> Why I use neovim in 2022</a></li><li class="chapter-item expanded "><a href="my_horrible_take_on_programming_languages.html"><strong aria-hidden="true">6.</strong> My horrible take on programming languages</a></li><li class="chapter-item expanded "><a href="the_problem_of_evil.html"><strong aria-hidden="true">7.</strong> The Problem of Evil</a></li><li class="chapter-item expanded "><a href="best_games_ive_played.html"><strong aria-hidden="true">8.</strong> Best Games I've Played</a></li><li class="chapter-item expanded "><a href="increment_by_one.html"><strong aria-hidden="true">9.</strong> Increment by one</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="matlab_sucks.html"><strong aria-hidden="true">1.</strong> Why Matlab is the worst programming language ever</a></li><li class="chapter-item expanded "><a href="beliefs_and_values.html"><strong aria-hidden="true">2.</strong> Beliefs and Values</a></li><li class="chapter-item expanded "><a href="to_neovim.html"><strong aria-hidden="true">3.</strong> To neovim</a></li><li class="chapter-item expanded "><a href="ide_journey.html"><strong aria-hidden="true">4.</strong> IDE journey</a></li><li class="chapter-item expanded "><a href="monospaced_fonts.html"><strong aria-hidden="true">5.</strong> Monospaced Fonts</a></li><li class="chapter-item expanded "><a href="why_i_use_neovim_in_2022.html"><strong aria-hidden="true">6.</strong> Why I use neovim in 2022</a></li><li class="chapter-item expanded "><a href="my_horrible_take_on_programming_languages.html"><strong aria-hidden="true">7.</strong> My horrible take on programming languages</a></li><li class="chapter-item expanded "><a href="the_problem_of_evil.html"><strong aria-hidden="true">8.</strong> The Problem of Evil</a></li><li class="chapter-item expanded "><a href="best_games_ive_played.html"><strong aria-hidden="true">9.</strong> Best Games I've Played</a></li><li class="chapter-item expanded "><a href="increment_by_one.html"><strong aria-hidden="true">10.</strong> Increment by one</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>

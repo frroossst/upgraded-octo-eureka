@@ -1,5 +1,6 @@
 # Summary
 
+- [Why Matlab is the worst programming language ever](./matlab_sucks.md)
 - [Beliefs and Values](./beliefs_and_values.md)
 - [To neovim](./to_neovim.md)
 - [IDE journey](./ide_journey.md)

@@ -192,6 +192,18 @@ very quickly.</p>
 <p>But matlab, oh matlab, the semicolon is an IO operation, if on a variable declaration or expression
 a semicolon is not used, the answer is printed to the console, else it is not? WTF! what? 
 why? who asked for this?</p>
+<h1 id="ambiguous-syntax"><a class="header" href="#ambiguous-syntax">Ambiguous Syntax</a></h1>
+<pre><code>roll(i) = randi([1, 6], 1);
+</code></pre>
+<p>What exactly is happening here? Well obviously <code>roll</code> is a matrix whose <code>i</code>th index is being assinged the
+return value of the function <code>randi</code> Why?! Why in the world would you have the same syntax for indexing and
+function calls? There is absolutely no reason to do that. </p>
+<pre><code>roll[i] = randi([1, 6], 1);
+</code></pre>
+<p>Now I can at a glance know what is a function and what isn't. Let's make this syntax even better though.
+<code>[1,6]</code> is a range why not a specific range operator like <code>::</code> or <code>..</code></p>
+<pre><code>roll[i] = randi(1..=6, 1);
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="beliefs-and-values"><a class="header" href="#beliefs-and-values">Beliefs and Values</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="to-neovim"><a class="header" href="#to-neovim">To neovim</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ide-journey"><a class="header" href="#ide-journey">IDE journey</a></h1>

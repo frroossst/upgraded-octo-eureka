@@ -36,3 +36,24 @@ very quickly.
 But matlab, oh matlab, the semicolon is an IO operation, if on a variable declaration or expression
 a semicolon is not used, the answer is printed to the console, else it is not? WTF! what? 
 why? who asked for this?
+
+# Ambiguous Syntax
+
+```
+roll(i) = randi([1, 6], 1);
+```
+
+What exactly is happening here? Well obviously `roll` is a matrix whose `i`th index is being assinged the
+return value of the function `randi` Why?! Why in the world would you have the same syntax for indexing and
+function calls? There is absolutely no reason to do that. 
+
+```
+roll[i] = randi([1, 6], 1);
+```
+
+Now I can at a glance know what is a function and what isn't. Let's make this syntax even better though.
+`[1,6]` is a range why not a specific range operator like `::` or `..`
+
+```
+roll[i] = randi(1..=6, 1);
+```
